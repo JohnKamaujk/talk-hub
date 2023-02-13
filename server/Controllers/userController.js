@@ -15,12 +15,12 @@ const registerUser = async (req, res) => {
     let user = await userModel.findOne({ email });
 
     if (user)
-      return res.satus(400).json("User with given email already exists");
+      return res.status(400).json("User with given email already exists");
 
     if (!name || !email || !password)
-      return res.satus(400).json("All fields are required");
+      return res.status(400).json("All fields are required");
     if (!validator.isEmail(email))
-      return res.satus(400).json("Enter a valid email");
+      return res.status(400).json("Enter a valid email");
     if (!validator.isStrongPassword(password))
       return res.status(400).json("Enter a strong password");
 
@@ -40,4 +40,25 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    let user = await userModel.findOne({ email });
+
+    if (!user) return res.status(400).json("Invalid email or password");
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) return res.status(400).json("Input a valid password");
+
+    const token = createToken(user._id);
+
+    res.status(200).json({ _id: user._id, name: user.name, email, token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { registerUser, loginUser };
