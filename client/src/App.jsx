@@ -7,12 +7,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { ChatContextProvider } from "./context/ChatContext";
 
 const App = () => {
   const { user } = useContext(AuthContext);
   return (
-    <>
-      <NavBar user={user} />
+    <ChatContextProvider user={user}>
+      <NavBar />
       <Container>
         <Routes>
           <Route path="/" element={user ? <Chat /> : <Login />} />
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Container>
-    </>
+    </ChatContextProvider>
   );
 };
 
