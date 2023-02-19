@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { ChatContext } from "../../context/ChatContext";
 
 const PotentialChats = () => {
-  const { potentialChatMates } = useContext(ChatContext);
+  const { potentialChatMates, createChat } = useContext(ChatContext);
+  const { user } = useContext(AuthContext);
 
   console.log(potentialChatMates);
 
@@ -12,7 +14,11 @@ const PotentialChats = () => {
         {potentialChatMates &&
           potentialChatMates.map((mate, index) => {
             return (
-              <div className="single-user" key={index}>
+              <div
+                className="single-user"
+                key={index}
+                onClick={() => createChat(user._id, mate._id)}
+              >
                 {mate.name}
                 <span className="user-online"></span>
               </div>
