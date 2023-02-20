@@ -9,6 +9,13 @@ const ChatBox = () => {
 
   const { recipientUser } = useFetchRecipientUser(currentChat, user);
 
+  if (!recipientUser)
+    return (
+      <p style={{ textAlign: "center", width: "100%" }}>
+        No Conversations selected yet...
+      </p>
+    );
+
   return <div>ChatBox</div>;
 };
 
