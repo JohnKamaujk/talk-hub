@@ -56,8 +56,6 @@ export const AuthContextProvider = ({ children }) => {
     setLoginInfo(info);
   }, []);
 
-  console.log(loginInfo);
-
   const loginUser = useCallback(
     async (e) => {
       e.preventDefault();

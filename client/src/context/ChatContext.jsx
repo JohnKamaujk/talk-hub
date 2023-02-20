@@ -8,6 +8,12 @@ export const ChatContextProvider = ({ children, user }) => {
   const [isUserChatsLoading, setIsUserChatsLoading] = useState(false);
   const [userChatsError, setUserChatsError] = useState(null);
   const [potentialChatMates, setPotentialChatMates] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState(null);
+  const [isMessagesLoading, setIsMessagesLoading] = useState(false);
+  const [messagesError, setMessagesError] = useState(null);
+
+  console.log("messages", messages);
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -59,6 +65,30 @@ export const ChatContextProvider = ({ children, user }) => {
     getUsersChats();
   }, [user]);
 
+  //Getting all messages associated with current chat
+  useEffect(() => {
+    const getMessages = async () => {
+      setIsMessagesLoading(true);
+      setMessagesError(null);
+
+      const response = await getRequest(
+        `${baseUrl}/messages/${currentChat?._id}`
+      );
+      setIsMessagesLoading(false);
+
+      if (response.error) {
+        return setMessagesError(response);
+      }
+      setMessages(response);
+    };
+    getMessages();
+  }, [currentChat]);
+
+  //Current chat is the chat a user has clicked to join
+  const updateCurrentChat = useCallback(async (chat) => {
+    setCurrentChat(chat);
+  });
+
   const createChat = useCallback(async (firstId, secondId) => {
     const response = await postRequest(
       `${baseUrl}/chats/`,
@@ -80,6 +110,11 @@ export const ChatContextProvider = ({ children, user }) => {
         userChatsError,
         potentialChatMates,
         createChat,
+        currentChat,
+        updateCurrentChat,
+        messages,
+        isMessagesLoading,
+        messagesError,
       }}
     >
       {children}
