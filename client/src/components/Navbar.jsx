@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Nav, Navbar, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -9,7 +9,18 @@ const NavBar = () => {
     <Navbar bg="dark" className="mb-4" style={{ height: "3.75rem" }}>
       <Container>
         <h2>
-          <Link to="/" className="link-light text-decoration-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-chat-fill"
+            viewBox="0 0 16 16"
+            className="mb-2"
+          >
+            <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+          </svg>
+          <Link to="/" className="link-light text-decoration-none mx-2">
             TalkHub
           </Link>
         </h2>

@@ -5,6 +5,12 @@ body {
   font-family: "Nunito", sans-serif;
   background: rgb(40, 40, 40);
 }
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 /* All users */
 .all-users {
   display: flex;
