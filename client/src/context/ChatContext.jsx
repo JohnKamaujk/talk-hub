@@ -16,6 +16,7 @@ export const ChatContextProvider = ({ children, user }) => {
   const [sendTextMessageError, setSendTextMessageError] = useState(null);
   const [newMessage, setNewMessage] = useState(null);
   const [socket, setSocket] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   //connecting client to io socket
   useEffect(() => {
@@ -31,7 +32,12 @@ export const ChatContextProvider = ({ children, user }) => {
   useEffect(() => {
     if (socket === null) return;
     socket.emit("addNewUser", user?._id);
+    socket.on("getOnlineUsers", (response) => {
+      setOnlineUsers(response);
+    });
   }, [socket]);
+
+  console.log(onlineUsers);
 
   useEffect(() => {
     const getAllUsers = async () => {

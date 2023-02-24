@@ -13,6 +13,8 @@ io.on("connection", (socket) => {
       onlineUsers.push({ userId, socketId: socket.id });
 
     console.log("online users", onlineUsers);
+
+    io.emit("getOnlineUsers", onlineUsers);
   });
 });
 
