@@ -16,6 +16,12 @@ io.on("connection", (socket) => {
 
     io.emit("getOnlineUsers", onlineUsers);
   });
+  //listen to disconnection from socket
+  socket.on("disconnect", () => {
+    onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
+
+    io.emit("getOnlineUsers", onlineUsers);
+  });
 });
 
 io.listen(3000);

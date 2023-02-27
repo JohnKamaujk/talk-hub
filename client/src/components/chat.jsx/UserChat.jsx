@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Stack } from "react-bootstrap";
 import { useFetchRecipientUser } from "../../hooks/useFetchRecipient";
 import avatar from "../../assets/avatar.svg";
+import { ChatContext } from "../../context/ChatContext";
 
 const UserChat = ({ chat, user }) => {
   const { recipientUser } = useFetchRecipientUser(chat, user);
+  const { onlineUsers } = useContext(ChatContext);
+
+  const isOnline = onlineUsers?.some(
+    (user) => user?.userId == recipientUser?._id
+  );
 
   return (
     <Stack
