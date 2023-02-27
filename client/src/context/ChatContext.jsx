@@ -43,6 +43,30 @@ export const ChatContextProvider = ({ children, user }) => {
 
   console.log(onlineUsers);
 
+  //send message to the socket server which will update the recipient user in realtime
+  useEffect(() => {
+    if (socket === null) return;
+
+    const recipientId = currentChat?.members.find((id) => id !== user?._id);
+    socket.emit("sendMessage", { ...newMessage, recipientId });
+  }, [newMessage]);
+
+  //recieve message from the socket server which will update the messages in the client side
+  useEffect(() => {
+    if (socket === null) return;
+
+    socket.on("getMessage", (response) => {
+      if (currentChat?._id !== response.chatId) return;
+
+      setMessages((prev) => [...prev, response]);
+    });
+
+    return () => {
+      socket.off("getMessage");
+    };
+  }, [socket, currentChat,messages]);
+
+  //getting all users who have never had chat with user,potential chatmates
   useEffect(() => {
     const getAllUsers = async () => {
       const response = await getRequest(`${baseUrl}/users`);
