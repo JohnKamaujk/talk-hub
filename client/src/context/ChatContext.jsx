@@ -51,7 +51,7 @@ export const ChatContextProvider = ({ children, user }) => {
     socket.emit("sendMessage", { ...newMessage, recipientId });
   }, [newMessage]);
 
-  //recieve message from the socket server which will update the messages in the client side
+  //recieve newmessage from the socket server which will in turn update the messages in the client side
   useEffect(() => {
     if (socket === null) return;
 
@@ -64,7 +64,7 @@ export const ChatContextProvider = ({ children, user }) => {
     return () => {
       socket.off("getMessage");
     };
-  }, [socket, currentChat,messages]);
+  }, [socket, currentChat, messages]);
 
   //getting all users who have never had chat with user,potential chatmates
   useEffect(() => {
