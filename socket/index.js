@@ -24,6 +24,11 @@ io.on("connection", (socket) => {
     );
     if (recipientUser) {
       io.to(recipientUser.socketId).emit("getMessage", message);
+      io.to(recipientUser.socketId).emit("getNotification", {
+        senderId: message.senderId,
+        isRead: false,
+        date: new Date(),
+      });
     }
   });
 

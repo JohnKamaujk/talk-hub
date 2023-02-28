@@ -17,6 +17,7 @@ export const ChatContextProvider = ({ children, user }) => {
   const [newMessage, setNewMessage] = useState(null);
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
   //connecting client to io socket
   useEffect(() => {
@@ -51,7 +52,7 @@ export const ChatContextProvider = ({ children, user }) => {
     socket.emit("sendMessage", { ...newMessage, recipientId });
   }, [newMessage]);
 
-  //recieve newmessage from the socket server which will in turn update the messages in the client side
+  //recieve newmessage/notification from the socket server which will in turn update the messages in the client side
   useEffect(() => {
     if (socket === null) return;
 
@@ -61,8 +62,20 @@ export const ChatContextProvider = ({ children, user }) => {
       setMessages((prev) => [...prev, response]);
     });
 
+    socket.on("getNotification", (response) => {
+      const isChatOpen = currentChat?.members.some(
+        (id) => id === response.senderId
+      );
+      if (isChatOpen) {
+        setNotifications((prev) => [{ ...response, isRead: true }, ...prev]);
+      } else {
+        setNotifications((prev) => [response, ...prev]);
+      }
+    });
+
     return () => {
       socket.off("getMessage");
+      socket.off("getNotification");
     };
   }, [socket, currentChat, messages]);
 
@@ -194,6 +207,7 @@ export const ChatContextProvider = ({ children, user }) => {
         messagesError,
         sendTextMessage,
         onlineUsers,
+        notifications,
       }}
     >
       {children}
