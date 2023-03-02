@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+import { unreadNotificationsFunc } from "../../utils/unreadNotifications";
 
 const Notification = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { userChats, notifications, allUsers } = useContext(ChatContext);
+  const { user } = useContext(AuthContext);
+  const unreadNotifications = unreadNotificationsFunc(notifications);
 
   return (
     <div className="notifications">

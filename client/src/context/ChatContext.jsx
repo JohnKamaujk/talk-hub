@@ -6,6 +6,7 @@ export const ChatContext = createContext();
 
 export const ChatContextProvider = ({ children, user }) => {
   const [userChats, setUserChats] = useState(null);
+  const [allUsers, setAllUsers] = useState([]);
   const [isUserChatsLoading, setIsUserChatsLoading] = useState(false);
   const [userChatsError, setUserChatsError] = useState(null);
   const [potentialChatMates, setPotentialChatMates] = useState([]);
@@ -107,6 +108,7 @@ export const ChatContextProvider = ({ children, user }) => {
         return !isChatCreated;
       });
       setPotentialChatMates(pChatMates);
+      setAllUsers(response);
     };
 
     getAllUsers();
@@ -208,6 +210,7 @@ export const ChatContextProvider = ({ children, user }) => {
         sendTextMessage,
         onlineUsers,
         notifications,
+        allUsers,
       }}
     >
       {children}
