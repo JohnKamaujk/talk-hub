@@ -193,6 +193,39 @@ export const ChatContextProvider = ({ children, user }) => {
     },
     []
   );
+  //Mark all notifications as read
+  const readAllNotifications = useCallback((notifications) => {
+    const readNotifications = notifications.map((notification) => {
+      return { ...notification, isRead: true };
+    });
+    setNotifications(readNotifications);
+  }, []);
+  //Mark a single notification as read
+  const readNotification = useCallback(
+    (notification, userChats, user, notifications) => {
+      //find the right chat associated with that notifcation to open
+      const rightChat = userChats.find((chat) => {
+        const chatMembers = [user._id, notification.senderId];
+        const isRightChat = chat?.members.every((member) => {
+          return chatMembers.includes(member);
+        });
+        return isRightChat;
+      });
+
+      //mark that notifiction as read after opening it
+      const mNotifications = notifications.map((n) => {
+        if (notification.senderId === n.senderId) {
+          return { ...notification, isRead: true };
+        } else {
+          return el;
+        }
+      });
+
+      setNotifications(mNotifications);
+      updateCurrentChat(rightChat);
+    },
+    []
+  );
 
   return (
     <ChatContext.Provider
@@ -211,6 +244,8 @@ export const ChatContextProvider = ({ children, user }) => {
         onlineUsers,
         notifications,
         allUsers,
+        readAllNotifications,
+        readNotification
       }}
     >
       {children}
