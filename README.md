@@ -1,4 +1,4 @@
-# Talk-hub Chat App
+# TalkHub Chat App
 ## ByJohn Kamau
 
 ## Screenshot
@@ -19,7 +19,7 @@
 ## Description
 <p>Talk hub </p>
 
-[Go Back to the top](#talk-hub)
+[Go Back to the top](#TalkHub-Chat-App)
 ## Features
 1. As a user, I want to sign up as new user.
 2. As a user, I want to sign in.
