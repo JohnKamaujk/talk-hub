@@ -35,7 +35,7 @@ Use the link to find the project design.
 
 Figma Design -[TurfZone-Web-app](https://www.figma.com/)
 
-[Go Back to the top](#TurfZone-Web-app)
+[Go Back to the top](#TalkHub-Chat-App)
 
  ###  Requirements
  * Access to  a computer or any other garget
@@ -47,7 +47,7 @@ Figma Design -[TurfZone-Web-app](https://www.figma.com/)
 * Unzip the downloaded files in a folder of choice.
 * Open the index file from the zipped file with any browser.
  ****
- [Go Back to the top]#Talk-hub Chat App)
+[Go Back to the top](#TalkHub-Chat-App)
 
 ### Live Link
 - Click this link to view the live application
@@ -57,7 +57,7 @@ Figma Design -[TurfZone-Web-app](https://www.figma.com/)
 * React bootstrap - which was used to style the User Interface.
 * nodejs Express API WITH ACTIVE ADMIN - which was used to create an api as well manage admin and users on the application.
 * HEROKU & VERCEL - which was used to deploy the project. Heroku for backend and vercel for frontend.
-[Go Back to the top](#TurfZone-Web-app)
+[Go Back to the top](#TalkHub-Chat-App)
 
 ## Known Bugs
 
@@ -80,10 +80,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-[Go Back to the top](#TurfZone-Web-app)
+[Go Back to the top](#TalkHub-Chat-App)
 
 ## Authors Info
 Contributors 
 [John Kamau](https://github.com/JohnKamaujk)
 
-[Go Back to the top](# Talk-hub Chat App)
+[Go Back to the top](#TalkHub-Chat-App)
