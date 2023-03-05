@@ -33,7 +33,7 @@
 
 Use the link to find the project design.
 
-Figma Design -[TurfZone-Web-app](https://www.figma.com/file/BGJQUi8O4Hcrzglhx2M3pL/Sports-Turf-Booking-App?node-id=7%3A14)
+Figma Design -[TurfZone-Web-app](https://www.figma.com/)
 
 [Go Back to the top](#TurfZone-Web-app)
 
@@ -47,7 +47,7 @@ Figma Design -[TurfZone-Web-app](https://www.figma.com/file/BGJQUi8O4Hcrzglhx2M3
 * Unzip the downloaded files in a folder of choice.
 * Open the index file from the zipped file with any browser.
  ****
- [Go Back to the top](#TurfZone-Web-app)
+ [Go Back to the top]#Talk-hub Chat App)
 
 ### Live Link
 - Click this link to view the live application
