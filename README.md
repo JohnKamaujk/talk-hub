@@ -19,7 +19,7 @@
 ## Description
 <p>Talk hub </p>
 
-[Go Back to the top](#Talk-hub Chat App)
+[Go Back to the top](#talk-hub)
 ## Features
 1. As a user, I want to sign up as new user.
 2. As a user, I want to sign in.
