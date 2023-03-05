@@ -19,7 +19,7 @@
 ## Description
 <p>Talk hub </p>
 
-[Go Back to the top](#TurfZone-Web-app)
+[Go Back to the top]# Talk-hub Chat App)
 ## Features
 1. As a user, I want to sign up as new user.
 2. As a user, I want to sign in.
@@ -43,7 +43,7 @@ Figma Design -[TurfZone-Web-app](https://www.figma.com/)
 
  ### Installation Process
  ****
-* Clone to the repo : git clone https://github.com/DennohKim/TurfZone
+* Clone to the repo : git clone https://github.com/JohnKamaujk/talk-hub
 * Unzip the downloaded files in a folder of choice.
 * Open the index file from the zipped file with any browser.
  ****
