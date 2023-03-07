@@ -130,7 +130,7 @@ export const ChatContextProvider = ({ children, user }) => {
       }
     };
     getUsersChats();
-  }, [user]);
+  }, [user,notifications]);
 
   //Getting all messages associated with current chat
   useEffect(() => {
