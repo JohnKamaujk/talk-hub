@@ -4,7 +4,7 @@ import { baseUrl, getRequest } from "../utils/services";
 
 export const useFetchLatestMesssage = (chat) => {
   const [latestMessage, setLatestMessage] = useState(null);
-  const [notifications, newMessage] = useContext(ChatContext);
+  const { notifications, newMessage } = useContext(ChatContext);
 
   useEffect(() => {
     const getMessages = async () => {
