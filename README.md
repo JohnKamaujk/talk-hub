@@ -2,7 +2,7 @@
 ## ByJohn Kamau
 
 ## Screenshot
- ![image](.)
+ ![image](./client/src/assets/images/screenshot.png)
 
  ## Table of Content
  - [Description](#description)
