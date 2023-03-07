@@ -5,6 +5,7 @@ import avatar from "../../assets/avatar.svg";
 import { ChatContext } from "../../context/ChatContext";
 import { unreadNotificationsFunc } from "../../utils/unreadNotifications";
 import { useFetchLatestMesssage } from "../../hooks/useFetchLatestMessage";
+import moment from "moment";
 
 const UserChat = ({ chat, user }) => {
   const { recipientUser } = useFetchRecipientUser(chat, user);
@@ -20,6 +21,15 @@ const UserChat = ({ chat, user }) => {
   const isOnline = onlineUsers?.some(
     (user) => user?.userId == recipientUser?._id
   );
+
+  const truncateText = (text) => {
+    let shortText = text.substring(0, 20);
+
+    if (text.length > 20) {
+      shortText = shortText + "...";
+    }
+    return shortText;
+  };
 
   return (
     <Stack
@@ -39,11 +49,17 @@ const UserChat = ({ chat, user }) => {
         </div>
         <div className="text-content">
           <div className="name">{recipientUser?.name}</div>
-          <div className="text">text message</div>
+          <div className="text">
+            {latestMessage?.text && (
+              <span>{truncateText(latestMessage?.text)}</span>
+            )}
+          </div>
         </div>
       </div>
       <div className="d-flex flex-column align-items-end">
-        <div className="date">19/02/2023</div>
+        <div className="date">
+          {moment(latestMessage?.createdAt).calendar()}
+        </div>
         <div
           className={
             thisUserNotifications?.length > 0 ? "this-user-notifications" : ""
