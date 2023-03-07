@@ -4,12 +4,14 @@ import { useFetchRecipientUser } from "../../hooks/useFetchRecipient";
 import avatar from "../../assets/avatar.svg";
 import { ChatContext } from "../../context/ChatContext";
 import { unreadNotificationsFunc } from "../../utils/unreadNotifications";
+import { useFetchLatestMesssage } from "../../hooks/useFetchLatestMessage";
 
 const UserChat = ({ chat, user }) => {
   const { recipientUser } = useFetchRecipientUser(chat, user);
   const { onlineUsers, notifications, markthisUserNotificationAsRead } =
     useContext(ChatContext);
   const unreadNotifications = unreadNotificationsFunc(notifications);
+  const { latestMessage } = useFetchLatestMesssage(chat);
 
   const thisUserNotifications = unreadNotifications?.filter(
     (n) => n.senderId == recipientUser?._id
