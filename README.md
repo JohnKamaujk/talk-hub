@@ -22,7 +22,7 @@
 [Go Back to the top](#TalkHub-Chat-App)
 ## Features
 1. As a user, I want to sign up as new user.
-2. As a user, I want to sign in.
+2. As a user, I want to log into my account.
 3. As a user, I want to view .
 4. As a user, I want to b.
 
